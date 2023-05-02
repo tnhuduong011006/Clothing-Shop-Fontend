@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-4 pt-10">
-    {{ typeLocal }}
+    <!-- {{ typeLocal }} -->
     <Form @submit="submitType" :validation-schema="typeFormSchema" class="col-span-2 col-start-2">
 
       <div class="mb-6">

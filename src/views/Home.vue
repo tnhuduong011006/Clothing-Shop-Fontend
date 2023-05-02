@@ -6,7 +6,6 @@
       </div>
       <div class="mt-3 col-md-6">
         <div class="grid grid-rows-1 grid-flow-col gap-3">
-
           <ProductList :types="types" />
           <div class="grid grid-cols-3 gap-4 px-10">
             <ProductShow :products="products"/>
@@ -15,39 +14,9 @@
           
         </div>
 
-        <!-- <div class="mt-3 row justify-content-around align-items-center">
-          <button class="btn btn-sm btn-primary" @click="refreshList()">
-            <i class="fas fa-redo"></i> Làm mới
-          </button>
-
-          <button class="btn btn-sm btn-success" @click="goToAddProduct">
-            <i class="fas fa-plus"></i> Thêm mới
-          </button>
-
-          <button class="btn btn-sm btn-danger" @click="removeAllProducts">
-            <i class="fas fa-trash"></i> Xóa tất cả
-          </button>
-        </div> -->
       </div>
-      <!-- <div class="mt-3 col-md-6">
-        <div v-if="activeProduct">
-          <h4>
-            Chi tiết Liên hệ
-            <i class="fas fa-address-card"></i>
-          </h4>
-          <ProductCard :product="activeProduct" />
-          <router-link :to="{
-              name: 'product.edit',
-              params: { id: activeProduct._id },
-            }">
-            <span class="mt-2 badge badge-warning">
-              <i class="fas fa-edit"></i> Hiệu chỉnh</span>
-          </router-link>
-        </div>
-      </div> -->
     </div>
 
-    <!-- <FooterPage /> -->
   </div>
 </template>
 
@@ -81,11 +50,16 @@ export default {
       products: ref([]),
       types: ref([]),
       keyword: ref(''),
+      userRole : { 
+        ADMIN: 'admin',
+        BASIC: 'basic'
+       },
     };
   },
   props: {
-    typeid: { type: String, required: true },
-    name: { type: String, required: true },
+    typeid: { type: String },
+    name: { type: String },
+    currentRole : { type: String},
   },
   watch: {
     // Giám sát các thay đổi của biến searchText.
@@ -166,9 +140,6 @@ export default {
         }
       }
     },
-    // goToAddProduct() {
-    //   this.$router.push({ name: "product.add" });
-    // },
   },
   mounted() {
     this.refreshList()

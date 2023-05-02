@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-4 pt-10">
-    {{ productLocal }}
+    <!-- {{ productLocal }} -->
     <Form @submit="submitProduct" :validation-schema="productFormSchema" class="col-span-2 col-start-2">
 
       <div class="mb-6">

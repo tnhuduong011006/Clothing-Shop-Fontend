@@ -29,7 +29,7 @@
           Mô tả:<br />{{ product.mo_ta }}
         </li>
         <li class="py-5">
-          <router-link :to="{ name: 'product.edit', params:{id : id}}" :id=id  class="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-10 rounded">Hiệu chỉnh sản phẩm</router-link>
+          <router-link v-if=" this.$route.path.split('/')[1] == 'admin'  " :to="{ name: 'product.edit', params:{id : id}}" :id=id  class="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-10 rounded">Hiệu chỉnh sản phẩm</router-link>
           
         </li>
 

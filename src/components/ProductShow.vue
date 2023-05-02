@@ -1,6 +1,6 @@
 <template>
   <div v-for="(product, index) in products" :key="product._id">
-    <router-link :to="{ name: 'productDetail', params: { id: product._id } }">
+    <router-link :to="{ name: this.ProductDetail, params: { id: product._id } }">
 
       <div class="h-full max-w-sm max-h-max rounded overflow-hidden shadow-lg hover:scale-105 transition-all pb-10">
         <img class="w-full" :src="product.url" :alt="product.ten">
@@ -24,11 +24,27 @@
 </template>
       
 <script>
-  export default{
-    props: {
-      products: { type: Array, default: [] },
-    },
-  }
+export default {
+  data() {
+    return {
+      ProductDetail: 'productDetail',
+    }
+  },
+  methods: {
+    setRouteName() {
+      if (this.$route.path.split('/')[1] == 'admin'){
+        this.ProductDetail = 'adminProductDetail'
+      }
+    }
+  },
+  props: {
+    products: { type: Array, default: [] }
+  },
+  mounted() {
+    this.setRouteName();
+  },
+}
+
 </script>
       
 <style scoped></style>

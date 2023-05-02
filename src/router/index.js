@@ -19,6 +19,11 @@ const routes = [
         path: '/',
         name: 'home',
         component: Home,
+        children: [
+
+
+
+        ],
       },
       {
         path: "/by-name/:name?",
@@ -33,18 +38,13 @@ const routes = [
         props: true
       },
       {
-        path: '/Guest',
-        name: 'guest',
-        component: GuestLayout
-      },
-      {
-        path: "/products/edit/:id",
+        path: "/admin/products/edit/:id",
         name: "product.edit",
         component: ProductEdit,
         props: true // Truyền các biến trong $route.params vào làm props
       },
       {
-        path: "/products/create",
+        path: "/admin/products/create",
         name: "productadd",
         component: ProductAdd,
         props: true // Truyền các biến trong $route.params vào làm props
@@ -56,17 +56,29 @@ const routes = [
         props: true
       },
       {
-        path: "/types/create",
+        path: "/admin/products/detail/:id",
+        name: "adminProductDetail",
+        component: ProductDetail,
+        props: true
+      },   
+      {
+        path: "/admin/types/create",
         name: "typeadd",
         component: TypeAdd,
         props: true // Truyền các biến trong $route.params vào làm props
       },
       {
-        path: "/types/delete",
+        path: "/admin/types/delete",
         name: "typedelete",
         component: TypeDelete,
         props: true // Truyền các biến trong $route.params vào làm props
       },
+      {
+        path: '/admin',
+        name: 'adminhome',
+        component: Home
+      },
+
     ]
   },
   {
