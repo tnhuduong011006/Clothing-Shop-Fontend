@@ -2,7 +2,7 @@
   <div>
     <h4 class="text-3xl text-center pt-10">Thêm mới loại sản phẩm</h4>
     <TypeForm :type="type" @submit:type="createType" />
-    <p>{{ message }}</p>
+    <p class="text-green-600 flex justify-center">{{ message }}</p>
   </div>
 </template>
 
@@ -26,6 +26,11 @@ export default {
       try {
         await TypeService.create(data);
         this.message = "Loại sản phẩm được thêm thành công.";
+        this.$router.push({
+          name: "typedelete",
+          query: this.$route.query,
+          hash: this.$route.hash,
+        });
       } catch (error) {
         console.log(error);
       }
@@ -33,7 +38,6 @@ export default {
 
   },
   created() {
-    // this.getType(this.id);
     this.type = {
       ten: ''
     };

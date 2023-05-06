@@ -59,7 +59,7 @@ export default {
     },
     redirectReload() {
       this.$router
-        .push({ name: "adminhome" })
+        .push({ name: "typedelete" })
         .then(() => { this.$router.go() })
     },
     async retrieveTypes() {

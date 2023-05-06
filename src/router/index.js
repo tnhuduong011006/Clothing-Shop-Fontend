@@ -30,8 +30,20 @@ const routes = [
         props: true
       },
       {
+        path: "/admin/by-name/:name?",
+        name: "adminByName",
+        component: Home,
+        props: true
+      },
+      {
         path: "/by-type/:typeid?",
         name: "byType",
+        component: Home,
+        props: true
+      },
+      {
+        path: "/admin/by-type/:typeid?",
+        name: "adminByType",
         component: Home,
         props: true
       },

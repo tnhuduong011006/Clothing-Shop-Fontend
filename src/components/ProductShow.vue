@@ -2,8 +2,8 @@
   <div v-for="(product, index) in products" :key="product._id">
     <router-link :to="{ name: this.ProductDetail, params: { id: product._id } }">
 
-      <div class="h-full max-w-sm max-h-max rounded overflow-hidden shadow-lg hover:scale-105 transition-all pb-10">
-        <img class="w-full" :src="product.url" :alt="product.ten">
+      <div class="h-auto max-w-sm max-h-max rounded overflow-hidden shadow-lg hover:scale-105 transition-all pb-10">
+        <img class="w-full h-80" :src="product.url" :alt="product.ten">
         <div class="px-6 py-4">
           <div class="font-sans text-xl mb-2">{{ product.ten }}</div>
         </div>

@@ -2,7 +2,7 @@
   <div v-if="product">
     <h4 class="text-3xl text-center pt-10">Hiệu chỉnh sản phẩm</h4>
     <ProductForm :product="product" @submit:product="updateProduct" @delete:product="deleteProduct" />
-    <!-- <p>{{ message }}</p> -->
+    <p class="text-red-600 flex justify-center">{{ message }}</p>
   </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
     async updateProduct(data) {
       try {
         await ProductService.update(this.product._id, data);
-        this.message = "Liên hệ được cập nhật thành công.";
+        this.message = "Sản phẩm được cập nhật thành công.";
         this.$router.push({
           name: "adminProductDetail",
           params: {
@@ -63,7 +63,7 @@ export default {
     },
 
     async deleteProduct() {
-      if (confirm("Bạn muốn xóa Liên hệ này?")) {
+      if (confirm("Bạn muốn xóa Sản phẩm này?")) {
         try {
           await ProductService.delete(this.product._id);
           this.$router.push({

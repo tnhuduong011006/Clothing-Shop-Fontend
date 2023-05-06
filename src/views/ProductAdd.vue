@@ -2,7 +2,7 @@
   <div>
     <h4 class="text-3xl text-center pt-10">Thêm mới Sản phẩm</h4>
     <ProductForm :product="product" @submit:product="createProduct" />
-    <p>{{ message }}</p>
+    <p class="text-green-600 flex justify-center">{{ message }}</p>
   </div>
 </template>
 
@@ -24,8 +24,17 @@ export default {
 
     async createProduct(data) {
       try {
-        await ProductService.create(data);
-        this.message = "Liên hệ được thêm thành công.";
+        const result = await ProductService.create(data);
+        console.log(result)
+        this.message = "Sản phẩm được thêm thành công.";
+        this.$router.push({
+          name: "adminProductDetail",
+          params: {
+            id: result._id
+          },
+          query: this.$route.query,
+          hash: this.$route.hash,
+        });
       } catch (error) {
         console.log(error);
       }
