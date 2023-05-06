@@ -15,7 +15,7 @@
         <Field name="gia" type="number"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           v-model="productLocal.gia" required />
-        <ErrorMessage name="gia" class="error-feedback" />
+        <ErrorMessage name="gia" class="error-feedback text-red-500" />
       </div>
 
       <div class="mb-6">
@@ -24,7 +24,10 @@
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option v-for="(type, index) in types" :key="type._id" :value="type">{{ type.ten }}</option>
         </select>
-        <ErrorMessage name="loai" class="error-feedback" />
+        <Field v-model="productLocal.loai.ten" type="hidden" name="loai" :value="productLocal.loai.ten">
+          
+        </Field>
+        <ErrorMessage name="loai" class="error-feedback text-red-500" />
       </div>
 
       <div class="mb-6">
@@ -32,21 +35,21 @@
         <Field name="url" type="text"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           v-model="productLocal.url" required />
-        <ErrorMessage name="url" class="error-feedback" />
+        <ErrorMessage name="url" class="error-feedback text-red-500" />
       </div>
       <div class="mb-6">
         <label for="mo_ta" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mô tả</label>
-        <textarea rows="3" cols="" name="mo_ta" type="text"
+        <Field v-model="productLocal.mo_ta"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          v-model="productLocal.mo_ta" required></textarea>
-        <ErrorMessage name="mo_ta" class="error-feedback" />
+          as="textarea" name="mo_ta" cols="30" rows="3" />
+        <ErrorMessage name="mo_ta" class="error-feedback text-red-500" />
       </div>
       <div class="mb-6">
         <label for="cua_hang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cửa hàng</label>
         <Field name="cua_hang" type="text"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           v-model="productLocal.cua_hang" required />
-        <ErrorMessage name="cua_hang" class="error-feedback" />
+        <ErrorMessage name="cua_hang" class="error-feedback text-red-500" />
       </div>
       <div>
         <button type="submit"
@@ -61,7 +64,6 @@
     </Form>
 
   </div>
-
 </template>
 
 <script>
@@ -84,6 +86,21 @@ export default {
         .string()
         .required("Tên phải có giá trị.")
         .min(2, "Tên phải ít nhất 2 ký tự."),
+      gia: yup
+        .string()
+        .required("Giá phải có giá trị."),
+      mo_ta: yup
+        .string()
+        .required("Thiếu mô tả"),
+      loai: yup
+        .string()
+        .required("Thiếu loại sản phẩm"),
+      url: yup
+        .string()
+        .required("Thiếu link ảnh"),
+      cua_hang: yup
+        .string()
+        .required("Thiếu cửa hàng")
     });
     return {
       // Chúng ta sẽ không muốn hiệu chỉnh props, nên tạo biến cục bộ

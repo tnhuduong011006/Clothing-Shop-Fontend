@@ -37,7 +37,7 @@ export default {
     this.product = {
       ten: '',
       gia: '',
-      loai: {},
+      loai: '',
       url: '',
       mo_ta: '',
       cua_hang: ''

@@ -1,7 +1,7 @@
 <template>
-  <header class="bg-white shadow h-16 flex justify-between items-stretch">
-    <router-link :to="{ name: this.Home }" class="inline-flex items-center px-10 hover:bg-gray-100 h-full">
-      Home
+  <header class="text-white bg-blue-500 shadow h-16 flex justify-between items-stretch">
+    <router-link :to="{ name: this.Home }" class="text-xl font-sans inline-flex items-center px-10 hover:bg-blue-600 h-full">
+      Website Giới thiệu sản phẩm
     </router-link>
     <div class="flex items-center px-10">
 
